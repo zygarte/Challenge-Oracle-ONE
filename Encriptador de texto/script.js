@@ -1,26 +1,70 @@
-const textInput = document.querySelector('#text-input');
-const result = document.querySelector('#result');
-const encrypt = document.querySelector('#encrypt');
-const decrypt = document.querySelector('#decrypt');
-const submitButton = document.querySelector('#submit');
-const copyButton = document.querySelector('#copy');
+// Obtener elementos del DOM
+const input = document.getElementById("input");
+const output = document.getElementById("output");
+const btnEncrypt = document.getElementById("btn-encrypt");
+const btnDecrypt = document.getElementById("btn-decrypt");
+const btnCopy = document.getElementById("btn-copy");
 
-submitButton.addEventListener('click', () => {
-  const text = textInput.value.trim().toLowerCase();
-  let output = '';
-  if (encrypt.checked) {
-    output = encryptText(text);
-  } else {
-    output = decryptText(text);
-  }
-  result.value = output;
-});
+// Mapa de encriptación
+const encryptionMap = {
+  e: "enter",
+  i: "imes",
+  a: "ai",
+  o: "ober",
+  u: "ufat",
+};
 
-copyButton.addEventListener('click', () => {
-  result.select();
-  document.execCommand('copy');
-});
-
+// Función para encriptar texto
 function encryptText(text) {
-  let output = '';
-  for (let i = 0; i <
+  let encryptedText = "";
+  for (let i = 0; i < text.length; i++) {
+    const char = text.charAt(i);
+    encryptedText += encryptionMap[char] || char;
+  }
+  return encryptedText;
+}
+
+// Función para desencriptar texto
+function decryptText(text) {
+  let decryptedText = "";
+  let i = 0;
+  while (i < text.length) {
+    const char = text.charAt(i);
+    if (char in encryptionMap) {
+      const possibleDecryptedChar = text.substr(i, encryptionMap[char].length);
+      if (encryptionMap[char] === possibleDecryptedChar) {
+        decryptedText += char;
+        i += encryptionMap[char].length;
+        continue;
+      }
+    }
+    decryptedText += char;
+    i++;
+  }
+  return decryptedText;
+}
+
+// Función para copiar el texto al portapapeles
+function copyText(text) {
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand("copy");
+  document.body.removeChild(textarea);
+}
+
+// Evento de click en botón "Encriptar"
+btnEncrypt.addEventListener("click", () => {
+  output.value = encryptText(input.value);
+});
+
+// Evento de click en botón "Desencriptar"
+btnDecrypt.addEventListener("click", () => {
+  output.value = decryptText(input.value);
+});
+
+// Evento de click en botón "Copiar"
+btnCopy.addEventListener("click", () => {
+  copyText(output.value);
+});
