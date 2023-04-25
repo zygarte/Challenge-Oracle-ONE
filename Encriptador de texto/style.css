@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  textarea, input[type="radio"] {
+    display: block;
+    margin-top: 5px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    resize: none;
+  }
+  
+  input[type="radio"] {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #008080;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #006666;
+  }
+  
+  #result {
+    margin-top: 10px;
+    height: 100px;
+  }
+  
+  #copy {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    color: #008080;
+    cursor: pointer;
+  }
+  
+  #copy:hover {
+    background-color: #e1e1e1;
+  }
+  
