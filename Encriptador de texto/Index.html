@@ -1,24 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Encriptador de Texto</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
+<html>
+  <head>
+
+    <meta charset="UTF-8" />
+    <title>Encriptador de Texto</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
     <h1>Encriptador de Texto</h1>
-    <label for="text-input">Texto:</label>
-    <textarea id="text-input"></textarea>
+    <label for="input-text">Ingresa el texto que deseas encriptar o desencriptar:</label>
+    <br>
+    <textarea id="input-text" rows="4" cols="50"></textarea>
+    <br>
+    <input type="radio" id="encrypt" name="mode" value="encrypt" checked>
     <label for="encrypt">Encriptar</label>
-    <input type="radio" id="encrypt" name="encrypt-type" value="encrypt" checked>
+    <input type="radio" id="decrypt" name="mode" value="decrypt">
     <label for="decrypt">Desencriptar</label>
-    <input type="radio" id="decrypt" name="encrypt-type" value="decrypt">
-    <button id="submit">Enviar</button>
-    <label for="result">Resultado:</label>
-    <textarea id="result"></textarea>
-    <button id="copy">Copiar</button>
-  </div>
-  <script src="script.js"></script>
-</body>
+    <br>
+    <button onclick="convertText()">Convertir</button>
+    <button onclick="copyText()">Copiar</button>
+    <br>
+    <label for="output-text">Resultado:</label>
+    <br>
+    <textarea id="output-text" rows="4" cols="50"></textarea>
+
+
+    <script src="script.js"></script>
+  </body>
 </html>
